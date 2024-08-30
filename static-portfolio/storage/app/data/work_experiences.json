@@ -1,0 +1,49 @@
+{
+    "summary": {
+        "name": "Arif Hassan",
+        "description": "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
+        "contact": [
+            "123, Banasree, Dhaka 1212, Bangladesh",
+            "(+880) 1750-123456",
+            "aarifhassan02@gmail.com"
+        ]
+    },
+    "education": [
+        {
+            "degree": "Master of Social Science - Economics",
+            "years": "2015 - 2016",
+            "institution": "Dhaka College, Dhaka, BD",
+            "details": "Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend"
+        },
+        {
+            "degree": "Bachelor of Social Science - Economics",
+            "years": "2009 - 2014",
+            "institution": "Brahmanbaria Govt. College, NU.",
+            "details": "Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila"
+        }
+    ],
+    "experience": [
+        {
+            "title": "Wordpress Developer",
+            "years": "2013 - Present",
+            "company": "Fiverr, Upwork",
+            "details": [
+                "Lead in the design, development, and implementation of the graphic, layout, and production communication materials",
+                "Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.",
+                "Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design",
+                "Oversee the efficient use of production project budgets ranging from $2,000 - $25,000"
+            ]
+        },
+        {
+            "title": "Laravel Development",
+            "years": "2024 - Present",
+            "company": "Freelancer",
+            "details": [
+                "Developed numerous marketing programs (logos, brochures, infographics, presentations, and advertisements).",
+                "Managed up to 5 projects or tasks at a given time while under pressure",
+                "Recommended and consulted with clients on the most appropriate graphic design",
+                "Created 4+ design presentations and proposals a month for clients and account managers"
+            ]
+        }
+    ]
+}
