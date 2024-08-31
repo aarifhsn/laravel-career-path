@@ -9,30 +9,40 @@ class ProjectController extends Controller
 {
     public function home()
     {
-        return view('home');
+        return view('home', [
+            'bodyClass' => 'index-page'
+        ]);
     }
     public function about()
     {
-        return view('about');
+        return view('about', [
+            'title' => 'About',
+            'bodyClass' => 'about-page'
+        ]);
     }
 
     public function workExperiences()
     {
         $experiences = json_decode(Storage::get('data/work_experiences.json'), true);
-        return view('work_experiences', compact('experiences'));
+        $title = 'Work Experiences';
+        $bodyClass = 'work-experiences-page';
+        return view('work_experiences', compact('experiences', 'title', 'bodyClass'));
     }
 
     public function projects()
     {
         $projects = json_decode(Storage::get('data/projects.json'), true);
-        return view('projects', compact('projects'));
+        $title = 'Projects';
+        $bodyClass = 'projects-page';
+        return view('projects', compact('projects', 'title', 'bodyClass'));
     }
 
     public function projectDetails($id)
     {
         $projects = json_decode(Storage::get('data/projects.json'), true);
-        $project = array_filter($projects, fn($p) => $p['id'] == $id);
-        $project = !empty($project) ? array_shift($project) : abort(404);
-        return view('project_details', compact('project'));
+        $project = collect($projects)->firstWhere('id', $id) ?? abort(404);
+        $title = 'Project' . $project['id'];
+        $bodyClass = 'project-details-page';
+        return view('project_details', compact('project', 'title', 'bodyClass'));
     }
 }
