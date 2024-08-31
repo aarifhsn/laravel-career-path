@@ -3,10 +3,10 @@
         <h3 class="sitename">Unique</h3>
         <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
         <div class="social-links d-flex justify-content-center">
-            <a href="https://x.com/aarifhsn"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://facebook.com/arifhassan"><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com/aarifhsn"><i class="bi bi-instagram"></i></a>
-            <a href="https://linkedin.com/aarifhsn"><i class="bi bi-linkedin"></i></a>
+            <a target="_blank" href="https://x.com/aarifhsn"><i class="bi bi-twitter-x"></i></a>
+            <a target="_blank" href="https://facebook.com/arifhassan"><i class="bi bi-facebook"></i></a>
+            <a target="_blank" href="https://instagram.com/aarifhsn"><i class="bi bi-instagram"></i></a>
+            <a target="_blank" href="https://linkedin.com/aarifhsn"><i class="bi bi-linkedin"></i></a>
         </div>
         <div class="container">
             <div class="copyright">

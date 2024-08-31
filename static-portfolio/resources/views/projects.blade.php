@@ -17,7 +17,9 @@
     </div>
 
     <div class="container">
-        <div class="row gy-4 portfolio-container">
+        <div class="row gy-4 isotope-container"
+            data-aos="fade-up"
+            data-aos-delay="200">
             @if(!empty($projects) && is_array($projects))
             @foreach ($projects as $project)
             <div
@@ -49,7 +51,6 @@
             <p>No projects found.</p>
             @endif
         </div>
-    </div>
     </div>
 </section>
 @endsection

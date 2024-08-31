@@ -11,6 +11,10 @@ class ProjectController extends Controller
     {
         return view('home');
     }
+    public function about()
+    {
+        return view('about');
+    }
 
     public function workExperiences()
     {
@@ -30,11 +34,5 @@ class ProjectController extends Controller
         $project = array_filter($projects, fn($p) => $p['id'] == $id);
         $project = !empty($project) ? array_shift($project) : abort(404);
         return view('project_details', compact('project'));
-    }
-
-
-    public function about()
-    {
-        return view('about');
     }
 }

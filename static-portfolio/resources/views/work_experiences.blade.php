@@ -5,6 +5,19 @@
 <!-- Resume Section -->
 <section id="resume" class="resume section">
 
+    <div class="page-title">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="text-center">Summary <span class="d-block">& </span>Work Experience</h1>
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ad vitae, aut expedita consectetur deleniti! Nesciunt, explicabo. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
 
         <div class="row">
