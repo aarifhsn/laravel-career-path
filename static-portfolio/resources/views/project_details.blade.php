@@ -27,11 +27,11 @@
                 <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
                     <h3>Project information</h3>
                     <ul>
+                        <li><strong>Project Name</strong>: {{ $project['name'] }}</li>
                         <li><strong>Category</strong>: Web design</li>
                         <li><strong>Client</strong>: ASU Company</li>
                         <li><strong>Project date</strong>: 01 March, 2020</li>
                         <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-                        <li><strong>Project Name</strong>: {{ $project['name'] }}</li>
                         <li><strong>Description</strong>: {{ $project['description'] }}</li>
                     </ul>
                 </div>

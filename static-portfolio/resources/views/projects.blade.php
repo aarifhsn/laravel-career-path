@@ -28,19 +28,34 @@
                     <img
                         src="{{asset('assets/images/projects/' . $project['image'])}}"
                         class="img-fluid"
-                        alt="" />
+                        alt="{{$project['name']}}" />
                     <div class="portfolio-info">
                         <h4>{{$project['name']}}</h4>
                         <p>{{$project['description']}}</p>
                         <a
-                            href="{{asset('assets/images/projects/' . $project['image'])}}"
+                            href="#"
                             title="{{$project['name']}}"
-                            data-gallery="portfolio-gallery-app"
+                            data-bs-toggle="modal"
+                            data-bs-target="#imageModal{{ $project['id'] }}"
                             class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                         <a
                             href="{{route('project-details', ['id' => $project['id']]) }}"
                             title="More Details"
                             class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for Enlarging Image -->
+            <div class="modal fade" id="imageModal{{ $project['id'] }}" tabindex="-1" aria-labelledby="imageModalLabel{{ $project['id'] }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img
+                                src="{{ asset('assets/images/projects/' . $project['image']) }}"
+                                class="img-fluid"
+                                alt="{{ $project['name'] }}">
+                        </div>
                     </div>
                 </div>
             </div>
