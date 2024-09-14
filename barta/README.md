@@ -18,43 +18,54 @@ Barta is a web application template built with Laravel. It provides essential fe
 -   Laravel 8.x or higher
 -   MySQL or another supported database
 
-### Setup
+## Installation
 
-1. **Clone the Repository**
+To set up this project locally, follow these steps:
+
+1. **Clone the repository:**
 
     ```bash
     git clone https://github.com/aarifhsn/laravel-career-path.git
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```bash
     cd barta
     ```
 
-2. **Install Dependencies**
+3. **Install dependencies:**
 
     ```bash
     composer install
     ```
 
-3. **Setup Environment**
+4. **Set up environment file:**
 
--   Copy the .env.example file to .env:
+    Copy the example environment file and set up your environment variables:
 
     ```bash
     cp .env.example .env
     ```
 
-4. **Generate Application Key**
+5. **Generate an application key:**
 
     ```bash
     php artisan key:generate
     ```
 
-5. **Run Migrations**
+6. **Run migrations (if applicable):**
 
     ```bash
     php artisan migrate
     ```
 
-6. **Serve the Application**
+7. **Start the development server:**
 
     ```bash
     php artisan serve
     ```
+
+8. **Access the application:**
+
+    Open your browser and go to [http://localhost:8000](http://localhost:8000).
