@@ -14,21 +14,32 @@
 
                     <!-- Profile dropdown -->
                     <div class="relative ml-3" x-data="{ open: false }">
-                        <div>
 
+                        <div>
                             @php
-                                $githubUsername = Auth::user()->username;
-                                $defaultAvatar = 'https://avatars.githubusercontent.com/u/4521730?v=4';
-                                $avatarUrl = $githubUsername ? "https://avatars.githubusercontent.com/$githubUsername" : $defaultAvatar;
+                                $defaultAvatar = asset("assets/default-avatar.png");
                             @endphp
+
+                            @auth
+                                                        @php
+                                                            $githubUsername = Auth::user()->username;
+                                                            $avatarUrl = $githubUsername ? "https://avatars.githubusercontent.com/$githubUsername" : $defaultAvatar;
+                                                            $userName = Auth::user()->name;
+                                                        @endphp
+                            @else
+                                                        @php
+                                                            $avatarUrl = $defaultAvatar;
+                                                            $userName = 'Guest';
+                                                        @endphp
+                            @endauth
 
                             <button @click="open = !open" type="button"
                                 class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full"
-                                src="{{ $avatarUrl }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 rounded-full" src="{{ $avatarUrl }}" alt="{{ $userName }}" />
                             </button>
+
                         </div>
 
                         <!-- Dropdown menu -->

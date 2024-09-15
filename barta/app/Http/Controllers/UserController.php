@@ -38,7 +38,6 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(), // Add the current user's ID to the unique rule
             'password' => 'nullable|string|min:6',
             'bio' => 'string|max:255',
-
         ]);
 
         // prepare userdata to be updated
