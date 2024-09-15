@@ -18,26 +18,15 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        // Find the user by email
-        $user = DB::table('users')->where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-
-            Auth::loginUsingId($user->id);
-
-            // Regenerate the session to avoid fixation attacks
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            session()->flash('success', 'You have successfully logged in!');
-
-            if (Auth::check()) {
-                return redirect('/');
-            }
+            return redirect()->intended('/');
         }
         // If credentials are invalid, return back with an error
         return back()->withErrors([
