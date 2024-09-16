@@ -24,7 +24,6 @@ class LoginController extends Controller
 
             return redirect()->intended('/');
         }
-        // If credentials are invalid, return back with an error
         return back()->withErrors([
             'email' => 'Email or password is incorrect.',
         ])->onlyInput('email');
