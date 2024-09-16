@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -20,16 +20,8 @@ class RegisterController extends Controller
     /**
      * Handle registration request.
      */
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        // validate the form inputs
-        $request->validate([
-            'full_name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
-
         // Split full name into first name and last name
         $fullName = explode(' ', $request->input('full_name'), 2);
         $firstName = $fullName[0];
