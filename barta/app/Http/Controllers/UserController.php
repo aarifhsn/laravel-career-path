@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Services\UserServices;
 
-
 class UserController extends Controller
 {
     protected $userService;
@@ -14,6 +13,7 @@ class UserController extends Controller
     {
         $this->userService = $userService;
     }
+
     public function profile()
     {
         $user = $this->userService->getUserProfile();
@@ -24,6 +24,7 @@ class UserController extends Controller
     public function showEditProfileForm()
     {
         $user = $this->userService->getUserProfile();
+
         return view('edit-profile', compact('user'));
     }
 
@@ -34,5 +35,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', $message);
     }
-
 }

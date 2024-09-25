@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(), // Add the current user's ID to the unique rule
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(), // Add the current user's ID to the unique rule
             'password' => 'nullable|string|min:6',
             'bio' => 'string|max:255',
         ];

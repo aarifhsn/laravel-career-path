@@ -2,14 +2,13 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserServices
 {
-
     public function register(RegisterRequest $request)
     {
         // Split full name into first name and last name
@@ -55,5 +54,4 @@ class UserServices
 
         return 'Profile updated successfully';
     }
-
 }
