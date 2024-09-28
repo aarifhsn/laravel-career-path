@@ -31,11 +31,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request->all());
-        $validatedData = $request->validate([
-            'content' => 'required |max:255',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'content' => 'required |max:255',
+            ],
+            [
+                'content.required' => 'The content field is required.',
+                'content.max' => 'The content may not be greater than 255 characters.',
+            ]
+        );
 
         Post::create([
             'user_id' => Auth::id(),

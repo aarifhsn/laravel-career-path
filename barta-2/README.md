@@ -1,11 +1,11 @@
 # Barta
 
-Barta is a web application template built with Laravel. It provides essential features for user management, including login, registration, and profile management. Users can update their profile information, change their bio, and set their avatar.
+Barta is a web application template built with Laravel. It provides essential features for user management, including login, registration, and profile management. Users can update their profile information, change their bio. Users also can create posts, edit profiles, and interact with others.
 
 ## Features
 
--   **User Authentication**: Secure login and registration functionality.
--   **Profile Management**: View and edit user profile information.
+-   **User Authentication**: Secure login and registration functionality. Authorization for actions (post editing, deleting, etc.)
+-   **Profile Management**: View and edit user profile information, Post creation and editing
 -   **Bio Update**: Users can update their bio from the profile page.
 -   **Avatar Management**: Set and display avatars sourced from GitHub or a default image.
 
@@ -31,7 +31,7 @@ To set up this project locally, follow these steps:
 2. **Navigate to the project directory:**
 
     ```bash
-    cd barta
+    cd barta-2
     ```
 
 3. **Install dependencies:**

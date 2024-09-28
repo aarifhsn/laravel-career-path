@@ -26,10 +26,9 @@
             <!-- /User Info -->
           </div>
 
-          @if (Auth::check() && Auth::user()->id == $post->user->id)
-        <!-- Card Action Dropdown -->
+          @if(Auth::check() && Auth::user()->id == $post->user->id)
+
         @include('components.card-action')
-        <!-- /Card Action Dropdown -->
       @endif
 
         </div>
