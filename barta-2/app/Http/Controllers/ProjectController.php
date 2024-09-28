@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use App\Models\Post;
 
 class ProjectController extends Controller
 {
@@ -11,6 +12,8 @@ class ProjectController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $posts = Post::with('user')->latest('created_at')->get();
+
+        return view('home', compact('posts'));
     }
 }

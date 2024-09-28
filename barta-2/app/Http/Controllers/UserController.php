@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Services\UserServices;
+use App\Models\Post;
 
 class UserController extends Controller
 {
@@ -14,16 +15,18 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function profile()
+    public function profile($username)
     {
-        $user = $this->userService->getUserProfile();
+        $user = $this->userService->getUserProfile($username);
 
-        return view('profile', compact('user'));
+        $posts = Post::where('user_id', $user->id)->latest('created_at')->get();
+
+        return view('profile', compact('user', 'posts'));
     }
 
     public function showEditProfileForm()
     {
-        $user = $this->userService->getUserProfile();
+        $user = $this->userService->getAuthUserProfile();
 
         return view('edit-profile', compact('user'));
     }
@@ -35,4 +38,6 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', $message);
     }
+
+
 }

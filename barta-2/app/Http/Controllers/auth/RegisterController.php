@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
         // log the user in after registation
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('profile')->with('success', 'You have successfully registered and logged in!');
+            return redirect()->route('profile', Auth::user()->username)->with('success', 'You have successfully registered and logged in!');
         }
 
         return redirect()->route('register')->with('errors', 'Registration Failed, please try again.');
