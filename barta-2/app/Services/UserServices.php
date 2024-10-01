@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class UserServices
 {
@@ -35,12 +35,11 @@ class UserServices
         return Auth::user();  // Get the currently logged-in user
     }
 
-
     public function getUserProfile($username)
     {
         $user = User::where('username', $username)->first();
 
-        if (!$user) {
+        if (! $user) {
             abort(404, 'User not found');
         }
 

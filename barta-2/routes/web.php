@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'home'])->name('home');
 
-// Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
-
 Route::get('/edit-profile', [UserController::class, 'showEditProfileForm'])->name('edit-profile')->middleware('auth');
 Route::put('/edit-profile', [UserController::class, 'updateProfile']);
 

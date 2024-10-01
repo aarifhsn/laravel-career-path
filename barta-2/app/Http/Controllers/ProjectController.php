@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use App\Models\Post;
+use Illuminate\Routing\Controller;
 
 class ProjectController extends Controller
 {

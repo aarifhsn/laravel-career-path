@@ -6,12 +6,12 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
 use App\Services\PostServices;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     protected $postService;
+
     public function __construct(PostServices $postService)
     {
         $this->postService = $postService;
@@ -65,7 +65,7 @@ class PostController extends Controller
         $post = Post::where('id', $id)->first();
 
         // Check if post exists
-        if (!$post) {
+        if (! $post) {
             return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found.');
         }
 
@@ -78,7 +78,7 @@ class PostController extends Controller
     public function update(PostRequest $request, string $username, string $id)
     {
         $post = Post::where('id', $id)->first();
-        if (!$post) {
+        if (! $post) {
             return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found.');
         }
 

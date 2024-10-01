@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Services\UserServices;
 use App\Models\Post;
+use App\Services\UserServices;
 
 class UserController extends Controller
 {
@@ -38,6 +38,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', $message);
     }
-
-
 }
