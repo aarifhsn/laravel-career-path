@@ -69,5 +69,9 @@
                 </div>
             </div>
         </div>
+
+        @include ('components.mobile-navbar')
+
+
     </nav>
 </header>

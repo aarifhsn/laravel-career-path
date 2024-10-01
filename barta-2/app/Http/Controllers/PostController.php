@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
+use App\Services\PostServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class PostController extends Controller
 {
+    protected $postService;
+    public function __construct(PostServices $postService)
+    {
+        $this->postService = $postService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,23 +36,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $validatedData = $request->validate(
-            [
-                'content' => 'required |max:255',
-            ],
-            [
-                'content.required' => 'The content field is required.',
-                'content.max' => 'The content may not be greater than 255 characters.',
-            ]
-        );
 
-        Post::create([
-            'user_id' => Auth::id(),
-            'content' => $validatedData['content'],
-            'created_at' => now(),
-        ]);
+        $this->postService->createPost($request);
 
         return redirect()->route('home')->with('success', 'Post created successfully!');
     }
@@ -81,13 +75,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $username, string $id)
+    public function update(PostRequest $request, string $username, string $id)
     {
-
-        $validatedData = $request->validate([
-            'content' => 'required |max:255',
-        ]);
-
         $post = Post::where('id', $id)->first();
         if (!$post) {
             return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found.');
@@ -100,7 +89,7 @@ class PostController extends Controller
 
         // Update post content
         $post->update([
-            'content' => $validatedData['content'],
+            'content' => $request->input('content'),
             'updated_at' => now(),
         ]);
 
