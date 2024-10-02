@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserServices
@@ -17,17 +16,16 @@ class UserServices
         $firstName = $fullName[0];
         $lastName = $fullName[1] ?? '';
 
-        // prepare user data
-        $userData = [
+        // prepare user data and create a new user record
+        $user = User::create([
             'first_name' => $firstName,
             'last_name' => $lastName,
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-        ];
+        ]);
 
-        // insert new user into the users table
-        return DB::table('users')->insert($userData);
+        return $user;
     }
 
     public function getAuthUserProfile()
@@ -48,6 +46,9 @@ class UserServices
 
     public function updateUserProfile($request)
     {
+
+        $user = Auth::user();
+
         // prepare userdata to be updated
         $userData = [
             'first_name' => $request->input('first_name'),
@@ -62,7 +63,7 @@ class UserServices
         }
 
         // Update the user's info
-        DB::table('users')->where('id', Auth::id())->update($userData);
+        User::where('id', $user->id)->update($userData);
 
         return 'Profile updated successfully';
     }
