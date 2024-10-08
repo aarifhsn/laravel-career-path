@@ -31,7 +31,7 @@ To set up this project locally, follow these steps:
 2. **Navigate to the project directory:**
 
     ```bash
-    cd laravel-career-path/barta-2
+    cd laravel-career-path/barta-3
     ```
 
 3. **Install dependencies:**
