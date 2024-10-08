@@ -10,6 +10,14 @@
                         </a>
                     </div>
                 </div>
+                <!-- Search input -->
+                <div class="search_form flex items-center">
+                    <form action="{{ route('search') }}" method="GET" class="flex items-center">
+                        <input type="text" placeholder="Search..." name="search"
+                            value="{{ request()->query('search') }}"
+                            class="border-2 border-gray-300 bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none" />
+                    </form>
+                </div>
                 <div class="hidden sm:ml-6 sm:flex gap-2 sm:items-center">
 
                     <!-- Profile dropdown -->
@@ -20,8 +28,17 @@
                                 class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->avatar_url }}"
-                                    alt="{{ auth()->user()->username }}" />
+                                @if (auth()->check())
+                                    <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->avatar_url }}"
+                                        alt="{{ auth()->user()->username }}" />
+                                @elseif (auth()->guest())
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                @endif
                             </button>
 
                         </div>

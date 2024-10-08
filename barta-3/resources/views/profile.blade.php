@@ -15,9 +15,16 @@
 
     <!-- Profile Info -->
     <div class="flex gap-4 justify-center flex-col text-center items-center">
+
+        <!-- Avatar -->
+        <div class="relative">
+            <img class="w-32 h-32 rounded-full border-2 border-gray-800" src="{{ $user->avatar_url }}"
+                alt="{{ $user->username }}" />
+        </div>
+
         <!-- User Meta -->
         <div>
-            <h1 class="font-bold md:text-2xl py-8">{{ $user->full_name }}</h1>
+            <h1 class="font-bold md:text-2xl pt-2 pb-8">{{ $user->full_name }}</h1>
             <p class="text-gray-700">
                 {{ $user->bio ?? (Auth::check() && Auth::id() == $user->id ? 'Please update your profile to add a bio.' : '') }}
             </p>

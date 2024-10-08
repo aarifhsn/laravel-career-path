@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Services\PostServices;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -77,21 +78,12 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, string $username, string $id)
     {
-        $post = Post::where('id', $id)->first();
+        // Use the post service to update the post
+        $post = $this->postService->updatePost($request, $username, $id);
+
         if (! $post) {
-            return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found.');
+            return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found or you are not authorized to update this post.');
         }
-
-        // Check if authenticated user is the owner of the post
-        if (Auth::id() !== $post->user_id) {
-            return redirect()->route('profile', ['username' => $username])->with('error', 'You are not authorized to update this post.');
-        }
-
-        // Update post content
-        $post->update([
-            'content' => $request->input('content'),
-            'updated_at' => now(),
-        ]);
 
         return redirect()->route('profile', ['username' => $username])->with('success', 'Post updated successfully');
     }

@@ -25,9 +25,14 @@
     <!-- Create Post Card Bottom -->
     <div>
         <!-- Card Bottom Action Buttons -->
-        <div class="form-group">
+        <div class="form-group mb-4">
             <!-- Image preview box -->
             <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 100%; height: auto;">
+            <button id="removeImage" type="button" onclick="removeImage()"
+                class="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1" style="display: none;">
+                &times;
+            </button>
+
         </div>
         <div class="flex items-center justify-between">
             <div class="flex gap-4 text-gray-600">
@@ -70,6 +75,18 @@
             output.style.display = 'block';
         }
         reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function removeImage() {
+        var fileInput = document.getElementById('image');
+        var output = document.getElementById('imagePreview');
+        var removeButton = document.getElementById('removeImage');
+
+        // Clear the file input and hide the preview and remove button
+        fileInput.value = '';
+        output.src = '#';
+        output.style.display = 'none';
+        removeButton.style.display = 'none';
     }
 </script>
 @endsection

@@ -25,10 +25,10 @@ class UserRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(), // Add the current user's ID to the unique rule
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::id(), // Add the current user's ID to the unique rule
             'password' => 'nullable|string|min:6',
-            'bio' => 'string|max:255',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'max:255',
+            'avatar' => 'nullable|image|mimetypes:image/jpeg,image/png,image/jpg,image/gif|max:2048',
         ];
     }
 }

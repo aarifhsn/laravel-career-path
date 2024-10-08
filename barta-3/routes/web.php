@@ -29,3 +29,5 @@ Route::get('/@{username}/question/{id}/edit', [PostController::class, 'edit'])->
 Route::put('/@{username}/question/{id}', [PostController::class, 'update'])->middleware('auth')->name('post.update');
 
 Route::delete('/question/{id}', [PostController::class, 'destroy'])->middleware('auth')->name('post.destroy');
+
+Route::get('/search', [UserController::class, 'search'])->name('search');

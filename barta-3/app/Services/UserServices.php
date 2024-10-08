@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-
 class UserServices
 {
     public function register(RegisterRequest $request)
@@ -39,7 +38,7 @@ class UserServices
     {
         $user = User::where('username', $username)->first();
 
-        if (!$user) {
+        if (! $user) {
             abort(404, 'User not found');
         }
 
@@ -48,9 +47,6 @@ class UserServices
 
     public function updateUserProfile($request)
     {
-
-        $user = Auth::user();
-
         // prepare userdata to be updated
         $userData = [
             'first_name' => $request->input('first_name'),
@@ -61,11 +57,12 @@ class UserServices
 
         // If avatar is provided, store it and add to the userData
         if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $userData['avatar'] = $avatarPath;
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $userData['avatar'] = $path;
 
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
+            // Delete old avatar if it exists
+            if (Auth::user()->avatar) {
+                Storage::disk('public')->delete(Auth::user()->avatar);
             }
         }
 
@@ -75,10 +72,8 @@ class UserServices
         }
 
         // Update the user's info
-        User::where('id', $user->id)->update($userData);
+        User::where('id', Auth::user()->id)->update($userData);
 
         return 'Profile updated successfully';
     }
-
-
 }

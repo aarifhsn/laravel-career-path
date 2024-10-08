@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
 
             'content' => 'nullable|required_without:image|max:255|string',
 
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'nullable|image|max:2048',
 
         ];
     }

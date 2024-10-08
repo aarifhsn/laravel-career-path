@@ -36,6 +36,12 @@
 
       <!-- Content -->
       <div class="py-4 text-gray-700 font-normal">
+
+        @if($post->image)
+      <img src="{{ asset('storage/' . $post->image) }}" class="min-h-auto w-full rounded-lg object-cover mb-3"
+        alt="{{ $user->username }}" />
+    @endif
+
         <p>
           {{ $post->content }}
         </p>

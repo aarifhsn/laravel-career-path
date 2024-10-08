@@ -8,6 +8,18 @@
     </div>
 @endif
 
+<!-- show all errors here -->
+@if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li class="alert alert-danger text-red-800 font-bold">
+                {{'* ' . $error }}
+            </li>
+        @endforeach
+    </ul>
+@endif
+
+
 <form method="POST" action="{{ route('edit-profile') }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -22,6 +34,7 @@
             </p>
 
             <div class="mt-10 border-b border-gray-900/10 pb-12">
+
                 <div class="col-span-full mt-10 pb-10">
                     <label for="avatar" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
                     <div class="mt-2 flex items-center gap-x-3">
@@ -37,7 +50,9 @@
                             </div>
                         </label>
                     </div>
+
                 </div>
+
                 <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-3">
                         <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First

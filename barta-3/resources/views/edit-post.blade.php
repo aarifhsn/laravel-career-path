@@ -9,7 +9,8 @@
 @endif
 
 @if (Auth::check() && Auth::user()->username == $user->username)
-    <form method="POST" action="{{route('post.update', ['username' => $post->user->username, 'id' => $post->id]) }}">
+    <form method="POST" action="{{route('post.update', ['username' => $post->user->username, 'id' => $post->id]) }}"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="space-y-12">
@@ -27,6 +28,31 @@
                             <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    {{-- Display the current image (if exists) --}}
+                    @if ($post->image)
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Current Image</label>
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image"
+                                    class="h-48 w-48 object-cover">
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- Image Upload Field --}}
+                    <div class="col-span-full">
+                        <label for="image" class="block text-sm font-medium text-gray-900">Upload New Image</label>
+                        <div class="mt-2">
+                            <input type="file" name="image" id="image"
+                                class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+                        </div>
+                        @error('image')
+                            <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -48,4 +74,18 @@
     </div>
 @endif
 
+@endsection
+
+@section('scripts')
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection

@@ -32,8 +32,10 @@
             <!-- Content -->
             <div class="py-4 text-gray-700 font-normal">
                 @if($post->image)
-                    <img src="{{ asset('storage/' . $post->image) }}"
-                        class="min-h-auto w-full rounded-lg object-cover max-h-64 md:max-h-72 mb-3" alt="" />
+                    <a href="{{route('post.show', ['username' => $post->user->username, 'id' => $post->id])}}">
+                        <img src="{{ asset('storage/' . $post->image) }}"
+                            class="min-h-auto w-full rounded-lg object-cover max-h-64 md:max-h-72 mb-3" alt="" />
+                    </a>
                 @endif
                 <p>
                     <a href="{{route('post.show', ['username' => $post->user->username, 'id' => $post->id])}}"
