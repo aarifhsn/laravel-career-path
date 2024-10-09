@@ -1,13 +1,14 @@
-# Barta
+# Barta - Social Networking Application
 
-Barta is a web application template built with Laravel. It provides essential features for user management, including login, registration, and profile management. Users can update their profile information, change their bio. Users also can create posts, edit profiles, and interact with others.
+Barta is a simple social networking platform where users can post content, update profiles, and interact with each other, similar to platforms like Facebook. The platform is built using Laravel, and it includes features like user registration, authentication, profile management, and a search feature to find posts based on users' name, username, or email.
 
 ## Features
 
--   **User Authentication**: Secure login and registration functionality. Authorization for actions (post editing, deleting, etc.)
--   **Profile Management**: View and edit user profile information, Post creation and editing
--   **Bio Update**: Users can update their bio from the profile page.
--   **Avatar Management**: Set and display avatars sourced from GitHub or a default image.
+-   User registration, login, and logout functionality
+-   Profile management (bio, avatar, etc.)
+-   Post creation with image uploads
+-   Search functionality to find posts by users' full name, username, or email
+-   User-friendly interface with responsive design
 
 ## Installation
 
@@ -16,7 +17,7 @@ Barta is a web application template built with Laravel. It provides essential fe
 -   PHP 7.4 or higher
 -   Composer
 -   Laravel 8.x or higher
--   MySQL or another supported database
+-   sqlite or another supported database
 
 ## Installation
 

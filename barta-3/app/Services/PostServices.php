@@ -7,7 +7,6 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-
 class PostServices
 {
     public function createPost(PostRequest $request)
@@ -30,7 +29,7 @@ class PostServices
     public function updatePost(PostRequest $request, string $username, string $id)
     {
         $post = Post::where('id', $id)->first();
-        if (!$post) {
+        if (! $post) {
             return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found.');
         }
         if (Auth::id() !== $post->user_id) {

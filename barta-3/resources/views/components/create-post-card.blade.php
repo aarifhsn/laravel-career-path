@@ -1,6 +1,7 @@
 <!-- Barta Create Post Card -->
 <form method="POST" enctype="multipart/form-data" action="{{ route('posts.store') }}"
-    class="bg-white border-2 border-slate-200 focus-within:ring-1  rounded-lg shadow mx-auto max-w-none px-4 py-5 sm:px-6 space-y-3">
+    class="bg-white border-2 border-slate-200 focus-within:ring-1  rounded-lg shadow mx-auto max-w-none px-4 py-5 sm:px-6 space-y-3"
+    x-data="{ imagePreview: '', showRemoveButton: false }">
     <!-- Create Post Card Top -->
     @csrf
     <div>
@@ -25,20 +26,28 @@
     <!-- Create Post Card Bottom -->
     <div>
         <!-- Card Bottom Action Buttons -->
-        <div class="form-group mb-4">
+        <div class="form-group mb-4 relative">
             <!-- Image preview box -->
-            <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 100%; height: auto;">
-            <button id="removeImage" type="button" onclick="removeImage()"
-                class="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1" style="display: none;">
+            <img x-show="imagePreview" x-bind:src="imagePreview" alt="Image Preview"
+                style="display: none; max-width: 100%; height: auto;">
+            <button id="removeImage" type="button" @click="imagePreview = ''; $refs.imageInput.value = '';
+                showRemoveButton=false" class="absolute top-0 right-0 bg-red-500 text-white rounded-full px-2.5 py-1"
+                x-show="showRemoveButton">
                 &times;
             </button>
-
         </div>
         <div class="flex items-center justify-between">
             <div class="flex gap-4 text-gray-600">
                 <!-- Upload Picture Button -->
                 <div>
-                    <input type="file" name="image" id="image" class="hidden" onchange="previewImage(event)" />
+                    <input type="file" name="image" id="image" class="hidden" x-ref="imageInput" @change="if ($event.target.files.length > 0) { 
+                            const reader = new FileReader(); 
+                            reader.onload = () => { 
+                                imagePreview = reader.result; 
+                                showRemoveButton = true; 
+                            }; 
+                            reader.readAsDataURL($event.target.files[0]); 
+                        }" />
                     <label for="image"
                         class="-m-2 flex gap-2 text-xs items-center rounded-full p-2 text-gray-600 hover:text-gray-800 cursor-pointer">
                         <span class="sr-only">Picture</span>
@@ -64,29 +73,3 @@
     <!-- /Create Post Card Bottom -->
 </form>
 <!-- /Barta Create Post Card -->
-
-@section('scripts')
-<script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('imagePreview');
-            output.src = reader.result;
-            output.style.display = 'block';
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-
-    function removeImage() {
-        var fileInput = document.getElementById('image');
-        var output = document.getElementById('imagePreview');
-        var removeButton = document.getElementById('removeImage');
-
-        // Clear the file input and hide the preview and remove button
-        fileInput.value = '';
-        output.src = '#';
-        output.style.display = 'none';
-        removeButton.style.display = 'none';
-    }
-</script>
-@endsection

@@ -9,8 +9,8 @@
 @endif
 
 @if (Auth::check() && Auth::user()->username == $user->username)
-    <form method="POST" action="{{route('post.update', ['username' => $post->user->username, 'id' => $post->id]) }}"
-        enctype="multipart/form-data">
+    <form method="POST" action="{{route('post.show', ['username' => $user->username, 'id' => $post->id])}}"
+        x-data="{imagePreview: '' , showRemoveButton: false }" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="space-y-12">
@@ -22,7 +22,7 @@
                             Content</label>
                         <div class="mt-2">
                             <textarea id="content" name="content" rows="3"
-                                class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">{{old('bio', $post->content)}}</textarea>
+                                class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">{{old('content', $post->content)}}</textarea>
                         </div>
                         @error('content')
                             <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
@@ -42,14 +42,36 @@
 
                     {{-- Image Upload Field --}}
                     <div class="col-span-full">
+                        <div class="form-group mb-4 relative">
+                            <!-- Image preview box -->
+                            <img x-show="imagePreview" x-bind:src="imagePreview" alt="Image Preview"
+                                style="display: none; max-width: 100%; height: auto;">
+                            <button id="removeImage" type="button"
+                                @click="imagePreview = ''; $refs.imageInput.value = ''; showRemoveButton=false"
+                                class="absolute top-0 right-0 bg-red-500 text-white rounded-full px-2.5 py-1"
+                                x-show="showRemoveButton">
+                                &times;
+                            </button>
+
+                        </div>
                         <label for="image" class="block text-sm font-medium text-gray-900">Upload New Image</label>
                         <div class="mt-2">
                             <input type="file" name="image" id="image"
-                                class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+                                class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
+                                x-ref="imageInput" @change="if ($event.target.files.length > 0) { 
+                                                                const reader = new FileReader(); 
+                                                                reader.onload = () => { 
+                                                                    imagePreview = reader.result; 
+                                                                    showRemoveButton = true; 
+                                                                }; 
+                                                                reader.readAsDataURL($event.target.files[0]); 
+                                                            }" />
                         </div>
                         @error('image')
                             <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
                         @enderror
+
+
                     </div>
 
 
@@ -74,18 +96,4 @@
     </div>
 @endif
 
-@endsection
-
-@section('scripts')
-<script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('imagePreview');
-            output.src = reader.result;
-            output.style.display = 'block';
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
 @endsection

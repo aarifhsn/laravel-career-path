@@ -85,7 +85,7 @@ class PostController extends Controller
             return redirect()->route('profile', ['username' => $username])->with('error', 'Post not found or you are not authorized to update this post.');
         }
 
-        return redirect()->route('profile', ['username' => $username])->with('success', 'Post updated successfully');
+        return redirect()->route('post.show', ['username' => $username, 'id' => $id])->with('success', 'Post updated successfully');
     }
 
     /**
