@@ -1,6 +1,6 @@
 # Barta - Social Networking Application
 
-Barta is a simple social networking platform where users can post content, update profiles, and interact with each other, similar to platforms like Facebook. The platform is built using Laravel, and it includes features like user registration, authentication, profile management, and a search feature to find posts based on users' name, username, or email.
+Barta is a simple social networking platform where users can post content, update profiles, and interact with each other, similar to platforms like Facebook. The platform is built using Laravel and includes features like user registration, authentication, profile management, and a search feature to find posts based on users' name, username, or email.
 
 ## Features
 
@@ -10,18 +10,18 @@ Barta is a simple social networking platform where users can post content, updat
 -   Search functionality to find posts by users' full name, username, or email
 -   User-friendly interface with responsive design
 
+## Prerequisites
+
+Before setting up the project, make sure you have the following installed:
+
+-   **PHP 7.4 or higher**
+-   **Composer**
+-   **Laravel 8.x or higher**
+-   **SQLite or another supported database**
+
 ## Installation
 
-### Prerequisites
-
--   PHP 7.4 or higher
--   Composer
--   Laravel 8.x or higher
--   sqlite or another supported database
-
-## Installation
-
-To set up this project locally, follow these steps:
+You can set up the project easily using a `Makefile` to streamline the process. Follow these steps:
 
 1. **Clone the repository:**
 
@@ -35,44 +35,18 @@ To set up this project locally, follow these steps:
     cd laravel-career-path/barta-3
     ```
 
-3. **Install dependencies:**
+3. **Set up the project with the `Makefile`:**
+
+    If you have `make` installed, you can run the following command to install dependencies, set up environment files, and configure the project automatically:
 
     ```bash
-    composer install
+    make install
     ```
 
-4. **Set up environment file:**
+4. **Access the application:**
 
-    Copy the example environment file and set up your environment variables:
+    Open your browser and navigate to [http://localhost:8000](http://localhost:8000) to start using the platform.
 
-    ```bash
-    cp .env.example .env
-    ```
+## License
 
-5. **Generate an application key:**
-
-    ```bash
-    php artisan key:generate
-    ```
-
-6. **Run migrations (if applicable):**
-
-    ```bash
-    php artisan migrate
-    ```
-
-7. **Create a symbolic link for storage:**
-
-    ```bash
-    php artisan storage:link
-    ```
-
-8. **Start the development server:**
-
-    ```bash
-    php artisan serve
-    ```
-
-9. **Access the application:**
-
-    Open your browser and go to [http://localhost:8000](http://localhost:8000).
+This project is licensed under the MIT License.
