@@ -61,12 +61,18 @@ To set up this project locally, follow these steps:
     php artisan migrate
     ```
 
-7. **Start the development server:**
+7. **Create a symbolic link for storage:**
+
+    ```bash
+    php artisan storage:link
+    ```
+
+8. **Start the development server:**
 
     ```bash
     php artisan serve
     ```
 
-8. **Access the application:**
+9. **Access the application:**
 
     Open your browser and go to [http://localhost:8000](http://localhost:8000).
