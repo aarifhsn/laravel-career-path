@@ -46,7 +46,3 @@ You can set up the project easily using a `Makefile` to streamline the process. 
 4. **Access the application:**
 
     Open your browser and navigate to [http://localhost:8000](http://localhost:8000) to start using the platform.
-
-## License
-
-This project is licensed under the MIT License.
