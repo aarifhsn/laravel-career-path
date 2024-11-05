@@ -94,13 +94,13 @@ You can adjust the configuration of Dedoc Scramble in the scramble.php configura
 -   Description: Register a new user.
 -   Request Body
 
-        ```bash
-        {
-            "name": "string",
-            "email": "string",
-            "password": "string"
-        }
-        ```
+    ```bash
+    {
+        "name": "string",
+        "email": "string",
+        "password": "string"
+    }
+    ```
 
     **Response**:
 
@@ -114,12 +114,12 @@ You can adjust the configuration of Dedoc Scramble in the scramble.php configura
 -   Description: Authenticate an existing user.
 -   Request Body
 
-        ```bash
-        {
-            "email": "string",
-            "password": "string"
-        }
-        ```
+    ```bash
+    {
+        "email": "string",
+        "password": "string"
+    }
+    ```
 
     **Response**:
 
@@ -135,11 +135,11 @@ You can adjust the configuration of Dedoc Scramble in the scramble.php configura
 -   Description: Shortens a given long URL.
 -   Request Body
 
-        ```bash
-        {
-            "long_url": "string (URL format)"
-        }
-        ```
+    ```bash
+    {
+        "long_url": "string (URL format)"
+    }
+    ```
 
     **Response**:
 
@@ -158,11 +158,11 @@ You can adjust the configuration of Dedoc Scramble in the scramble.php configura
 -   Description: Lists all shortened URLs created by the authenticated user with their visit counts.
 -   Request Body
 
-        ```bash
-        {
-            "long_url": "string (URL format)"
-        }
-        ```
+    ```bash
+    {
+        "long_url": "string (URL format)"
+    }
+    ```
 
     **Response**:
 
