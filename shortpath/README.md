@@ -1,6 +1,6 @@
-# Project Name
+# ShortPath
 
-**SHORTPATH** \* RESTful API for a URL shortener service.
+**RESTful API for a URL shortener service**.
 
 ## Table of Contents
 
