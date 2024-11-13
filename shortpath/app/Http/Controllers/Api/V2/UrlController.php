@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Url;
 
+
 class UrlController extends Controller
 {
 
@@ -20,9 +21,9 @@ class UrlController extends Controller
         $longUrl = $request->long_url;
 
         // Check if URL already exists for this user
-        $existingUrl = Url::where('long_url', $longUrl)->where('user_id', $user->id)->first();
+        $existingUrl = Url::where('long_url', $longUrl)->first();
         if ($existingUrl) {
-            return response()->json(['short_url' => url("/{$existingUrl->short_code}")], 200);
+            return response()->json(['short_url' => url("/v2/{$existingUrl->short_code}")], 200);
         }
 
         // Generate a new short code
@@ -31,19 +32,16 @@ class UrlController extends Controller
             'user_id' => $user->id,
             'long_url' => $longUrl,
             'short_code' => $shortCode,
-            'visit_count' => 0 // Initialize visit count to 0
         ]);
 
-        return response()->json(['short_url' => url("/{$shortCode}")]);
+        return response()->json(['short_url' => url("/v2/{$shortCode}")], 201);
     }
 
     public function redirect($shortCode)
     {
-
-
         $url = Url::where('short_code', $shortCode)->firstOrFail();
 
-        $url->increment('visit_count', 1);
+        $url->increment('visit_count');
 
         return redirect($url->long_url);
     }

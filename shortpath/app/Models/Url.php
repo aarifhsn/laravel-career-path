@@ -15,7 +15,7 @@ class Url extends Model
         'visit_count',
     ];
 
-    public function use()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

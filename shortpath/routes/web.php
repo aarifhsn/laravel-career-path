@@ -8,20 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{shortCode}', function ($shortCode) {
-
-    $urlV1 = (new UrlControllerV1())->redirect($shortCode);
-    if ($urlV1) {
-        return $urlV1;
-    }
-
-    $urlV2 = (new UrlControllerV2())->redirect($shortCode);
-    if ($urlV2) {
-        return $urlV2;
-    }
-
-    return abort(404); // Return a 404 if not found in either version
+Route::prefix('v1')->group(function () {
+    Route::get('/{shortCode}', [UrlControllerV1::class, 'redirect']);
 });
 
-
-
+Route::prefix('v2')->group(function () {
+    Route::get('/{shortCode}', [UrlControllerV2::class, 'redirect']);
+});

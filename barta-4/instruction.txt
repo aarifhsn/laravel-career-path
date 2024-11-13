@@ -1,0 +1,9 @@
+Jara assignment 11 Livewire use korsen tara authentication ki breeze diye korsen na manually?
+Fahad replied to Ashraful
+Fahad Ahmed Chowdhury
+Custom
+
+Assignment-11 নিয়ে আমার একটা প্রশ্ন ছিল। Home feed এ প্রতিটা post এর details, update, delete গুলাও কি Livewire দিয়ে implement করবো? @Al Nahian @Ahmed Shamim Hasan Shaon
+Ahmed Shamim Hasan replied to Saif
+Ahmed Shamim Hasan Shaon
+It's up to you. If you can do that, it'd be great.

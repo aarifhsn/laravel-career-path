@@ -17,14 +17,7 @@
 1. **Clone the repository**:
 
     ```bash
-    git clone git clone https://github.com/aarifhsn/laravel-career-path.git
-    cd yourproject
-    ```
-
-    **Navigate to the project directory**:
-
-    ```bash
-    cd laravel-career-path/shortpath
+    git clone https://github.com/aarifhsn/shortpath.git
     ```
 
 2. **Install dependencies**:
@@ -84,8 +77,9 @@ This project uses [Dedoc Scramble](https://github.com/dedoc/scramble) for automa
 **Customizing Documentation**
 You can adjust the configuration of Dedoc Scramble in the scramble.php configuration file for custom endpoints, models, or descriptions.
 
-##API Documentation
-###Authentication Endpoints
+## API Documentation
+
+### Authentication Endpoints
 
 **Register**
 
@@ -98,7 +92,8 @@ You can adjust the configuration of Dedoc Scramble in the scramble.php configura
     {
         "name": "string",
         "email": "string",
-        "password": "string"
+        "password": "string",
+        "password_confirmation": "string"
     }
     ```
 

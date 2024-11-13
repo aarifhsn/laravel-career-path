@@ -20,9 +20,9 @@ class UrlController extends Controller
 
 
         //check if URL already exists
-        $existingUrl = Url::where('long_url', $longUrl)->where('user_id', $user->id)->first();
+        $existingUrl = Url::where('long_url', $longUrl)->first();
         if ($existingUrl) {
-            return response()->json(['short_url' => url("/{$existingUrl->short_code}")], 200);
+            return response()->json(['short_url' => url("/v1/{$existingUrl->short_code}")], 200);
         }
 
         //generate short code
@@ -32,7 +32,7 @@ class UrlController extends Controller
             'long_url' => $longUrl,
             'short_code' => $shortCode
         ]);
-        return response()->json(['short_url' => url("/{$shortCode}")]);
+        return response()->json(['short_url' => url("/v1/{$shortCode}")]);
     }
 
     public function redirect($shortCode)
@@ -45,7 +45,7 @@ class UrlController extends Controller
     public function list(Request $request)
     {
         $user = $request->user();
-        $urls = $user->urls()->with('visits')->get();
+        $urls = $user->urls()->get();
 
         $response = $urls->map(function ($url) {
             return [
