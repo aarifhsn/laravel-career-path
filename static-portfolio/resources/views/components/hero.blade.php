@@ -8,9 +8,9 @@
             <h2>Arif Hassan</h2>
             <p>
                 I'm
-                <span
-                    class="typed"
-                    data-typed-items="Designer, Developer, Freelancer, Photographer">Developer</span><span class="typed-cursor typed-cursor--blink"></span>
+                <span class="typed"
+                    data-typed-items="PHP Developer, Laravel Developer, WordPress Expert, Freelancer">PHP
+                    Developer</span><span class="typed-cursor typed-cursor--blink"></span>
             </p>
             <div class="social-links">
                 <a target="_blank" href="https://x.com/aarifhsn"><i class="bi bi-twitter-x"></i></a>
