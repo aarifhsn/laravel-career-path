@@ -75,52 +75,6 @@ To set up this project locally, follow these steps:
 
 We welcome contributions to this project! To ensure a smooth process, please follow these guidelines:
 
-### How to Contribute
-
-1. **Fork the Repository:**
-
-    - Click the "Fork" button at the top right of the repository page on GitHub to create a copy of this repository under your own account.
-
-2. **Clone Your Fork:**
-
-    - Clone your forked repository to your local machine:
-        ```bash
-        git clone https://github.com/your-username/laravel-career-path.git
-        ```
-
-3. **Create a New Branch:**
-
-    - Navigate to the project directory and create a new branch for your changes:
-        ```bash
-        cd laravel-career-path
-        git checkout -b feature-branch
-        ```
-    - Replace `feature-branch` with a descriptive name for your branch.
-
-4. **Make Your Changes:**
-
-    - Make the necessary changes or additions in your local repository. Be sure to follow the coding standards used in the project.
-
-5. **Commit Your Changes:**
-
-    - Commit your changes with a meaningful commit message:
-        ```bash
-        git add .
-        git commit -m 'Add a descriptive message about your changes'
-        ```
-
-6. **Push to Your Fork:**
-
-    - Push your changes to your forked repository:
-        ```bash
-        git push origin feature-branch
-        ```
-
-7. **Create a Pull Request:**
-    - Go to the original repository on GitHub.
-    - Click on "New Pull Request" and select your branch.
-    - Provide a clear description of the changes you have made and submit the pull request.
-
 ### Reporting Issues
 
 If you encounter any issues or have suggestions for improvements, please:
