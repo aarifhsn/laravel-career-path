@@ -96,8 +96,6 @@ To maintain consistency and quality, please adhere to the following coding stand
 -   **Testing:** Add tests for any new features or bug fixes. Run the test suite to ensure all tests pass before submitting a pull request.
 -   **Commit Messages:** Use clear and descriptive commit messages to explain the purpose of your changes.
 
-Thank you for contributing to this project!
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
